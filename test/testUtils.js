@@ -17,6 +17,16 @@ export function getMenuNode(instance) {
   );
 }
 
+export function getMainNode(instance) {
+  const inputNode = getInputNode(instance);
+  TestUtils.Simulate.focus(inputNode);
+
+  return TestUtils.findRenderedDOMComponentWithClass(
+    instance,
+    'bootstrap-typeahead'
+  );
+}
+
 export function performSearch(query, instance, callback) {
   const inputNode = getInputNode(instance);
   TestUtils.Simulate.change(inputNode, {target: {value: query}});

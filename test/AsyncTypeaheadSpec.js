@@ -154,4 +154,26 @@ describe('<AsyncTypeahead>', () => {
     });
   });
 
+  it('should display number of pages', done => {
+      let searchCount = 0;
+
+    const instance = getTypeaheadInstance({
+        ...defaultProps,
+        multiple: false,
+        options: ['one', 'two', 'one'],
+        onSearch: query => searchCount++,
+        selected: ['two'],
+    });
+
+
+      performSearch('one', instance, () => {
+          const menuNode = getMenuNode(instance);
+          const menuItems = menuNode.children;
+
+          console.log('menuItems', menuItems[2]);
+          expect(menuItems[2]).to.equal(<li>Displaying 1 page of 10</li>);
+          done();
+      });
+  });
+
 });

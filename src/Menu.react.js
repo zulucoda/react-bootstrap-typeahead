@@ -43,6 +43,7 @@ class Menu extends React.Component {
         style={this._getMenuStyle()}>
         {contents}
         {this._renderPaginationMenuItem()}
+        <li>Displaying 1 page of 10</li>
       </BaseMenu>
     );
   }
